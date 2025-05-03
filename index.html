@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Joyeux Anniversaire Camelle</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -11,23 +11,25 @@
       background: url('https://source.unsplash.com/1600x900/?pink-roses') no-repeat center center fixed;
       background-size: cover;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
       overflow: hidden;
+      position: relative;
     }
     .overlay {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
     }
     .content {
-      position: relative;
       z-index: 1;
-      max-width: 80%;
+      padding: 2rem;
       animation: fadeIn 2s ease-out;
     }
     h1 {
@@ -37,31 +39,30 @@
     }
     p {
       font-size: 1.5rem;
-      line-height: 1.4;
       margin-bottom: 2rem;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    .images {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      z-index: 1;
+    }
+    .images img {
+      height: 100px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      animation: sway 4s ease-in-out infinite;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .photos {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 2;
-    }
-    .photos img {
-      height: 100px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-    .photos img:hover {
-      transform: scale(1.1);
+    @keyframes sway {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     button {
       position: absolute;
@@ -73,22 +74,20 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      z-index: 3;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
-
   <div class="content">
     <h1>Joyeux anniversaire Camelle 🎀🌸</h1>
     <p>Chère Camelle, en ce jour tout en douceur, je te souhaite un merveilleux anniversaire ; que ta vie s’épanouisse comme une rose au matin et que chaque instant t’apporte bonheur et poésie.</p>
-  </div>
-
-  <div class="photos">
-    <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="pétales de roses rouges">
-    <img src="vue-de-dessus-fleurs-roses.jpg" alt="fleurs roses">
-    <img src="vue-de-dessus-de-marguerite-printaniere-coloree-avec-des-petales.jpg" alt="marguerites colorées">
+    <div class="images">
+      <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="Pétales rouges">
+      <img src="vue-de-dessus-fleurs-roses.jpg" alt="Fleurs roses">
+      <img src="vue-de-dessus-de-marguerite-printaniere-coloree-avec-des-petales.jpg" alt="Marguerite printanière">
+    </div>
   </div>
 
   <!-- Audio -->
@@ -98,9 +97,22 @@
   </audio>
 
   <!-- Bouton de relance -->
-  <button onclick="document.getElementById('musique').currentTime = 0; document.getElementById('musique').play()">
-    🎵 Relancer la musique
-  </button>
+  <button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
 
+  <!-- Script pour forcer lecture auto -->
+  <script>
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('musique');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Lecture automatique réussie
+        }).catch(error => {
+          // L'utilisateur doit interagir (clic) pour activer l'audio
+          console.log("L'utilisateur doit cliquer pour activer le son.");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
