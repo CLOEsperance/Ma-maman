@@ -63,6 +63,18 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
@@ -76,16 +88,15 @@
     <img src="https://source.unsplash.com/100x80/?rose-petal" alt="pétale">
     <img src="https://source.unsplash.com/100x80/?garden-rose" alt="rose">
   </div>
- <audio id="musique" autoplay loop>
-  <source src="joyeux_anniversaire.mp3.mp3" type="audio/mpeg">
-</audio>
 
-<button onclick="document.getElementById('musique').play()">🎵 Lancer la musique</button>
+  <!-- Audio -->
+  <audio id="musique" autoplay loop>
+    <source src="joyeux_anniversaire.mp3.mp3" type="audio/mpeg">
+    Ton navigateur ne supporte pas l'audio.
+  </audio>
 
-</audio>
-
-<!-- Bouton facultatif pour relancer -->
-<button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
+  <!-- Bouton de relance -->
+  <button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
 
 </body>
 </html>
