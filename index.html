@@ -45,23 +45,23 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .flowers {
+    .photos {
       position: absolute;
-      bottom: 20px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
-      z-index: 1;
+      gap: 15px;
+      z-index: 2;
     }
-    .flowers img {
-      height: 80px;
-      opacity: 0.8;
-      animation: sway 4s ease-in-out infinite;
+    .photos img {
+      height: 100px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
-    @keyframes sway {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .photos img:hover {
+      transform: scale(1.1);
     }
     button {
       position: absolute;
@@ -73,20 +73,22 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      z-index: 2;
+      z-index: 3;
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
+
   <div class="content">
     <h1>Joyeux anniversaire Camelle 🎀🌸</h1>
     <p>Chère Camelle, en ce jour tout en douceur, je te souhaite un merveilleux anniversaire ; que ta vie s’épanouisse comme une rose au matin et que chaque instant t’apporte bonheur et poésie.</p>
   </div>
-  <div class="flowers">
-    <img src="https://source.unsplash.com/100x80/?pink-flower" alt="fleur">
-    <img src="https://source.unsplash.com/100x80/?rose-petal" alt="pétale">
-    <img src="https://source.unsplash.com/100x80/?garden-rose" alt="rose">
+
+  <div class="photos">
+    <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="pétales de roses rouges">
+    <img src="vue-de-dessus-fleurs-roses.jpg" alt="fleurs roses">
+    <img src="vue-de-dessus-de-marguerite-printaniere-coloree-avec-des-petales.jpg" alt="marguerites colorées">
   </div>
 
   <!-- Audio -->
@@ -96,7 +98,9 @@
   </audio>
 
   <!-- Bouton de relance -->
-  <button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
+  <button onclick="document.getElementById('musique').currentTime = 0; document.getElementById('musique').play()">
+    🎵 Relancer la musique
+  </button>
 
 </body>
 </html>
