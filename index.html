@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyeux Anniversaire Camelle</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      height: 100vh;
+      background: url('https://source.unsplash.com/1600x900/?pink-roses') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 80%;
+      animation: fadeIn 2s ease-out;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    p {
+      font-size: 1.5rem;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .flowers {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 1;
+    }
+    .flowers img {
+      height: 80px;
+      opacity: 0.8;
+      animation: sway 4s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Joyeux anniversaire Camelle 🎀🌸</h1>
+    <p>Chère Camelle, en ce jour tout en douceur, je te souhaite un merveilleux anniversaire ; que ta vie s’épanouisse comme une rose au matin et que chaque instant t’apporte bonheur et poésie.</p>
+  </div>
+  <div class="flowers">
+    <img src="https://source.unsplash.com/100x80/?pink-flower" alt="fleur">
+    <img src="https://source.unsplash.com/100x80/?rose-petal" alt="pétale">
+    <img src="https://source.unsplash.com/100x80/?garden-rose" alt="rose">
+  </div>
+  <audio autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/BirthdaySong.wav" type="audio/wav">
+    Votre navigateur ne supporte pas la lecture audio.
+  </audio>
+</body>
+</html>
