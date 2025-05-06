@@ -2,45 +2,46 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joyeux Anniversaire Gi </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joyeux Anniversaire Gisèle</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      height: 100vh;
+      min-height: 100vh; /* permet le scroll vertical */
       background: url('https://source.unsplash.com/1600x900/?pink-roses') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto; /* active le scroll vertical */
       position: relative;
+      padding: 2rem 1rem; /* espace autour du contenu */
     }
     .overlay {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
       background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
     .content {
       z-index: 1;
-      padding: 2rem;
-      animation: fadeIn 2s ease-out;
+      padding: 1rem;
+      max-width: 800px;
+      width: 100%;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    .poeme {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
     }
     .images {
       display: flex;
@@ -49,19 +50,17 @@
       align-items: center;
       margin-top: 1rem;
       z-index: 1;
+      flex-wrap: wrap;
     }
     .images img {
       height: 100px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       animation: sway 4s ease-in-out infinite;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      max-width: 30%;
     }
     @keyframes sway {
-      0%, 100% { transform: translateY(0); }
+      0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
     button {
@@ -76,33 +75,31 @@
       cursor: pointer;
       z-index: 2;
     }
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .poeme { font-size: 1rem; }
+      .images img { height: 80px; }
+    }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
   <div class="content">
     <h1>Joyeux anniversaire Gisèle ❤ 🎀🌸</h1>
-    <p>Chère Gi ,
-
-Il existe dans ce monde des âmes rares, celles qui traversent notre vie comme une étoile filante — brèves, mais inoubliables.
-
-Toi, tu es cette étoile, mais tu n’as jamais filé. Tu t’es arrêtée, doucement, dans mon ciel.
-
-En ce jour unique, je voudrais que tu saches que ta présence est un cadeau que la vie m’a offert.
-Ton regard, ta voix, ton esprit — tout en toi respire la grâce, la force, la tendresse.
-Tu n’es pas seulement importante pour moi… tu es essentielle.
-
-Comme les mots dans un poème, tu donnes un sens à chaque ligne de mes journées.
-Comme les pages d’un roman, j’ai envie de te lire, encore et encore, sans jamais arriver à la fin.
-
-Merci d’être toi.
-
-Joyeux anniversaire, Gisèle.
-Que cette journée illumine ton cœur autant que tu illumines le mien.
-
-— De tout cœur, avec tendresse infinie.
-
-</p>
+    <div class="poeme">
+      <p>Chère Gisèle,</p>
+      <p>Il existe dans ce monde des âmes rares, celles qui traversent notre vie comme une étoile filante — brèves, mais inoubliables.</p>
+      <p>Toi, tu es cette étoile, mais tu n’as jamais filé. Tu t’es arrêtée, doucement, dans mon ciel.</p>
+      <p>En ce jour unique, je voudrais que tu saches que ta présence est un cadeau que la vie m’a offert.<br>
+      Ton regard, ta voix, ton esprit — tout en toi respire la grâce, la force, la tendresse.<br>
+      Tu n’es pas seulement importante pour moi… tu es essentielle.</p>
+      <p>Comme les mots dans un poème, tu donnes un sens à chaque ligne de mes journées.<br>
+      Comme les pages d’un roman, j’ai envie de te lire, encore et encore, sans jamais arriver à la fin.</p>
+      <p>Merci d’être toi.</p>
+      <p>Joyeux anniversaire, Gisèle.<br>
+      Que cette journée illumine ton cœur autant que tu illumines le mien.</p>
+      <p>— De tout cœur, avec tendresse infinie.</p>
+    </div>
     <div class="images">
       <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="Pétales rouges">
       <img src="vue-de-dessus-fleurs-roses.jpg" alt="Fleurs roses">
@@ -116,23 +113,8 @@ Que cette journée illumine ton cœur autant que tu illumines le mien.
     Ton navigateur ne supporte pas l'audio.
   </audio>
 
-  <!-- Bouton de relance -->
-  <button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
+  <!-- Bouton relance -->
+  <button onclick="document.getElementById('musique').currentTime=0; document.getElementById('musique').play();">🎵 Relancer la musique</button>
 
-  <!-- Script pour forcer lecture auto -->
-  <script>
-    window.addEventListener('load', () => {
-      const audio = document.getElementById('musique');
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          // Lecture automatique réussie
-        }).catch(error => {
-          // L'utilisateur doit interagir (clic) pour activer l'audio
-          console.log("L'utilisateur doit cliquer pour activer le son.");
-        });
-      }
-    });
-  </script>
 </body>
 </html>
