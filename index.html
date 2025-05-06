@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joyeux Anniversaire Gisèle</title>
+  <title>Joyeux Anniversaire Camelle</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -22,44 +22,32 @@
     }
     .overlay {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
     .content {
       z-index: 1;
       padding: 2rem;
-      max-width: 80%;
+      animation: fadeIn 2s ease-out;
     }
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
-    /* Effet de défilement lent */
-    .poeme {
-      font-size: 1.2rem;
-      margin-bottom: 2.5rem; /* espace avant les photos */
-      line-height: 1.6;
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
-      max-height: 200px;
-      overflow: hidden;
-      position: relative;
-    }
-    .poeme p {
-      position: absolute;
-      width: 100%;
-      animation: defile 30s linear forwards;
-    }
-    @keyframes defile {
-      from { top: 100%; }
-      to   { top: -100%; }
     }
     .images {
       display: flex;
       gap: 20px;
       justify-content: center;
       align-items: center;
+      margin-top: 1rem;
       z-index: 1;
     }
     .images img {
@@ -68,9 +56,13 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       animation: sway 4s ease-in-out infinite;
     }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     @keyframes sway {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     button {
       position: absolute;
@@ -78,52 +70,39 @@
       right: 20px;
       padding: 10px 20px;
       font-size: 1rem;
-      background-color: rgba(255,255,255,0.8);
+      background-color: rgba(255, 255, 255, 0.8);
       border: none;
       border-radius: 10px;
       cursor: pointer;
       z-index: 2;
     }
-    /* Bouton de démarrage initial */
-    #start {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: rgba(255,255,255,0.9);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      z-index: 3;
-    }
   </style>
 </head>
 <body>
-
   <div class="overlay"></div>
-
-  <!-- Bouton de démarrage -->
-  <button id="start">Cliquez ici pour commencer 🎵</button>
-
-  <div class="content" style="display:none;">
+  <div class="content">
     <h1>Joyeux anniversaire Gisèle ❤ 🎀🌸</h1>
-    <div class="poeme">
-      <p>
-        Chère Gisèle,<br><br>
-        Il existe dans ce monde des âmes rares, celles qui traversent notre vie comme une étoile filante — brèves, mais inoubliables.<br><br>
-        Toi, tu es cette étoile, mais tu n’as jamais filé. Tu t’es arrêtée, doucement, dans mon ciel.<br><br>
-        En ce jour unique, je voudrais que tu saches que ta présence est un cadeau que la vie m’a offert.<br>
-        Ton regard, ta voix, ton esprit — tout en toi respire la grâce, la force, la tendresse.<br><br>
-        Tu n’es pas seulement importante pour moi… tu es essentielle.<br><br>
-        Comme les mots dans un poème, tu donnes un sens à chaque ligne de mes journées.<br>
-        Comme les pages d’un roman, j’ai envie de te lire, encore et encore, sans jamais arriver à la fin.<br><br>
-        Merci d’être toi.<br><br>
-        Joyeux anniversaire, Gisèle.<br>
-        Que cette journée illumine ton cœur autant que tu illumines le mien.<br><br>
-        — De tout cœur, avec tendresse infinie.
-      </p>
-    </div>
+    <p>Chère Gi ,
+
+Il existe dans ce monde des âmes rares, celles qui traversent notre vie comme une étoile filante — brèves, mais inoubliables.
+
+Toi, tu es cette étoile, mais tu n’as jamais filé. Tu t’es arrêtée, doucement, dans mon ciel.
+
+En ce jour unique, je voudrais que tu saches que ta présence est un cadeau que la vie m’a offert.
+Ton regard, ta voix, ton esprit — tout en toi respire la grâce, la force, la tendresse.
+Tu n’es pas seulement importante pour moi… tu es essentielle.
+
+Comme les mots dans un poème, tu donnes un sens à chaque ligne de mes journées.
+Comme les pages d’un roman, j’ai envie de te lire, encore et encore, sans jamais arriver à la fin.
+
+Merci d’être toi.
+
+Joyeux anniversaire, Gisèle.
+Que cette journée illumine ton cœur autant que tu illumines le mien.
+
+— De tout cœur, avec tendresse infinie.
+
+</p>
     <div class="images">
       <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="Pétales rouges">
       <img src="vue-de-dessus-fleurs-roses.jpg" alt="Fleurs roses">
@@ -132,24 +111,27 @@
   </div>
 
   <!-- Audio -->
-  <audio id="musique" loop>
+  <audio id="musique" autoplay loop>
     <source src="joyeux_anniversaire.mp3.mp3" type="audio/mpeg">
     Ton navigateur ne supporte pas l'audio.
   </audio>
 
-  <!-- Bouton relance -->
-  <button onclick="musique.play()">🎵 Relancer la musique</button>
+  <!-- Bouton de relance -->
+  <button onclick="document.getElementById('musique').play()">🎵 Relancer la musique</button>
 
+  <!-- Script pour forcer lecture auto -->
   <script>
-    const startBtn = document.getElementById('start');
-    const content  = document.querySelector('.content');
-    const musique  = document.getElementById('musique');
-
-    startBtn.addEventListener('click', () => {
-      // Démarrage audio et affichage
-      musique.play();
-      content.style.display = '';
-      startBtn.style.display = 'none';
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('musique');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Lecture automatique réussie
+        }).catch(error => {
+          // L'utilisateur doit interagir (clic) pour activer l'audio
+          console.log("L'utilisateur doit cliquer pour activer le son.");
+        });
+      }
     });
   </script>
 </body>
