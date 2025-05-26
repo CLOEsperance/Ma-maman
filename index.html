@@ -20,29 +20,34 @@
       position: relative;
       padding: 2rem 1rem;
     }
+
     .overlay {
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
+
     .content {
       z-index: 1;
       padding: 1rem;
       max-width: 800px;
       width: 100%;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
+
     .poeme {
       font-size: 1.2rem;
       margin-bottom: 2.5rem;
       line-height: 1.6;
       text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
     }
+
     .images {
       display: flex;
       gap: 20px;
@@ -52,6 +57,7 @@
       z-index: 1;
       flex-wrap: wrap;
     }
+
     .images img {
       height: 100px;
       border-radius: 10px;
@@ -59,10 +65,12 @@
       animation: sway 4s ease-in-out infinite;
       max-width: 30%;
     }
+
     @keyframes sway {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+
     button {
       position: absolute;
       top: 20px;
@@ -75,6 +83,7 @@
       cursor: pointer;
       z-index: 2;
     }
+
     @media (max-width: 600px) {
       h1 { font-size: 2rem; }
       .poeme { font-size: 1rem; }
@@ -84,9 +93,10 @@
 </head>
 <body>
   <div class="overlay"></div>
+
   <div class="content">
     <h1>Bonne fête maman ❤️🌹</h1>
-    
+
     <div class="poeme">
       <p>Maman,</p>
       <p>En ce jour qui t'est dédié, je veux te dire combien tu es précieuse à mes yeux. Tu es mon phare dans la tempête, mon refuge dans les moments d'incertitude, et la source inépuisable de mon courage.</p>
@@ -98,19 +108,33 @@
 
     <div class="images">
       <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="Pétales rouges">
-     <img src="fete-des-meres.png" alt="Fête des mères">
-      
+      <img src="fete-des-meres.png" alt="Fête des mères">
       <img src="vue-de-dessus-de-marguerite-printaniere-coloree-avec-des-petales.jpg" alt="Marguerite printanière">
     </div>
   </div>
 
- <audio id="musique" autoplay loop>
-  <source src="fete_des_meres.mp3" type="audio/mpeg">
-  Ton navigateur ne supporte pas l'audio.
-</audio>
+  <!-- Musique -->
+  <audio id="musique" autoplay loop>
+    <source src="fete_des_meres.mp3" type="audio/mpeg">
+    Ton navigateur ne supporte pas l'audio HTML5.
+  </audio>
 
-  <!-- Bouton relance -->
+  <!-- Bouton relancer -->
   <button onclick="document.getElementById('musique').currentTime=0; document.getElementById('musique').play();">🎵 Relancer la musique</button>
+
+  <!-- Script pour relancer automatique si bloqué -->
+  <script>
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('musique');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Affiche un message ou laisse le bouton relancer
+          console.log("Autoplay bloqué. L'utilisateur doit cliquer pour démarrer la musique.");
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
