@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonne fête maman</title>
+  <title>Bonne fête papa</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       min-height: 100vh;
-      background: url('https://source.unsplash.com/1600x900/?roses-love') no-repeat center center fixed;
+      background: url('https://source.unsplash.com/1600x900/?father-son') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -95,46 +95,40 @@
   <div class="overlay"></div>
 
   <div class="content">
-    <h1>Bonne fête maman ❤️🌹</h1>
+    <h1>Bonne fête papa 👔💙</h1>
 
     <div class="poeme">
-      <p>Maman,</p>
-      <p>En ce jour qui t'est dédié, je veux te dire combien tu es précieuse à mes yeux. Tu es mon phare dans la tempête, mon refuge dans les moments d'incertitude, et la source inépuisable de mon courage.</p>
-      <p>Ton amour inconditionnel, ta tendresse sans faille et ta force tranquille m'ont façonné(e) et guidé(e) tout au long de ma vie. Grâce à toi, j'ai appris la valeur de la compassion, de la persévérance et de la générosité.</p>
-      <p>Chaque sourire que tu m'as offert, chaque mot d'encouragement que tu m'as soufflé, chaque sacrifice que tu as consenti pour mon bonheur, sont gravés à jamais dans mon cœur.</p>
-      <p>Aujourd'hui, je te rends hommage avec ces mots, bien qu'aucun ne puisse réellement exprimer toute ma gratitude et mon amour pour toi.</p>
-      <p><strong>Bonne fête des mères, maman chérie. Je t'aime plus que les mots ne peuvent le dire.</strong></p>
+      <p>Papa,</p>
+      <p>En ce jour spécial, je veux te dire combien je suis fier(e) d’être ton enfant. Tu as toujours été mon modèle, mon protecteur et mon héros silencieux.</p>
+      <p>Ta force tranquille, ta sagesse, et ta présence m’ont aidé à avancer dans la vie avec confiance.</p>
+      <p>Merci pour les sacrifices, les leçons de vie, et tous les moments partagés qui resteront à jamais dans mon cœur.</p>
+      <p><strong>Bonne fête des pères, je t’aime très fort.</strong></p>
     </div>
 
     <div class="images">
-      <img src="petales-de-roses-rouges-sur-fond-blanc.jpg" alt="Pétales rouges">
-      <img src="fete-des-meres.png.jpg" alt="Fête des mères">
-      <img src="vue-de-dessus-de-marguerite-printaniere-coloree-avec-des-petales.jpg" alt="Marguerite printanière">
+      <img src="Père_et_fils1.webp" alt="Père et fils 1">
+      <img src="Père_et_fils.webp" alt="Père et fils 2">
+      <img src="Accessoires.webp" alt="Accessoires fête des pères">
     </div>
   </div>
 
-  <!-- Musique -->
   <audio id="musique" autoplay loop>
-    <source src="fete_des_meres.mp3.mp3" type="audio/mpeg">
+    <source src="fete_des_peres.mp3" type="audio/mpeg">
     Ton navigateur ne supporte pas l'audio HTML5.
   </audio>
 
-  <!-- Bouton relancer -->
   <button onclick="document.getElementById('musique').currentTime=0; document.getElementById('musique').play();">🎵 Relancer la musique</button>
 
-  <!-- Script pour relancer automatique si bloqué -->
   <script>
     window.addEventListener('load', () => {
       const audio = document.getElementById('musique');
       const playPromise = audio.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          // Affiche un message ou laisse le bouton relancer
           console.log("Autoplay bloqué. L'utilisateur doit cliquer pour démarrer la musique.");
         });
       }
     });
   </script>
-
 </body>
 </html>
